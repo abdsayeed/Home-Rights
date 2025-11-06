@@ -1,0 +1,1252 @@
+[
+  {
+    "topic_ID": "TOP-001",
+    "title": "Sample topic about deposits #1",
+    "plain_summary": "This topic explains key rights and responsibilities related to deposits in UK housing law.",
+    "legal_reference": "Example Act 2001, Section 1",
+    "category": "Deposits",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Deposits guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-002",
+    "title": "Sample topic about evictions #2",
+    "plain_summary": "This topic explains key rights and responsibilities related to evictions in UK housing law.",
+    "legal_reference": "Example Act 2002, Section 2",
+    "category": "Evictions",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Evictions guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-003",
+    "title": "Sample topic about repairs #3",
+    "plain_summary": "This topic explains key rights and responsibilities related to repairs in UK housing law.",
+    "legal_reference": "Example Act 2003, Section 3",
+    "category": "Repairs",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Repairs guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-004",
+    "title": "Sample topic about tenancy basics #4",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenancy basics in UK housing law.",
+    "legal_reference": "Example Act 2004, Section 4",
+    "category": "Tenancy Basics",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenancy Basics guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-005",
+    "title": "Sample topic about rent & arrears #5",
+    "plain_summary": "This topic explains key rights and responsibilities related to rent & arrears in UK housing law.",
+    "legal_reference": "Example Act 2005, Section 5",
+    "category": "Rent & Arrears",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Rent & Arrears guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-006",
+    "title": "Sample topic about landlord responsibilities #6",
+    "plain_summary": "This topic explains key rights and responsibilities related to landlord responsibilities in UK housing law.",
+    "legal_reference": "Example Act 2006, Section 6",
+    "category": "Landlord Responsibilities",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Landlord Responsibilities guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-007",
+    "title": "Sample topic about tenant rights #7",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenant rights in UK housing law.",
+    "legal_reference": "Example Act 2007, Section 7",
+    "category": "Tenant Rights",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenant Rights guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-008",
+    "title": "Sample topic about ending tenancy #8",
+    "plain_summary": "This topic explains key rights and responsibilities related to ending tenancy in UK housing law.",
+    "legal_reference": "Example Act 2008, Section 8",
+    "category": "Ending Tenancy",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Ending Tenancy guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-009",
+    "title": "Sample topic about local support #9",
+    "plain_summary": "This topic explains key rights and responsibilities related to local support in UK housing law.",
+    "legal_reference": "Example Act 2009, Section 9",
+    "category": "Local Support",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Local Support guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-010",
+    "title": "Sample topic about emergency housing #10",
+    "plain_summary": "This topic explains key rights and responsibilities related to emergency housing in UK housing law.",
+    "legal_reference": "Example Act 2010, Section 10",
+    "category": "Emergency Housing",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Emergency Housing guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-011",
+    "title": "Sample topic about deposits #11",
+    "plain_summary": "This topic explains key rights and responsibilities related to deposits in UK housing law.",
+    "legal_reference": "Example Act 2011, Section 11",
+    "category": "Deposits",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Deposits guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-012",
+    "title": "Sample topic about evictions #12",
+    "plain_summary": "This topic explains key rights and responsibilities related to evictions in UK housing law.",
+    "legal_reference": "Example Act 2012, Section 12",
+    "category": "Evictions",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Evictions guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-013",
+    "title": "Sample topic about repairs #13",
+    "plain_summary": "This topic explains key rights and responsibilities related to repairs in UK housing law.",
+    "legal_reference": "Example Act 2013, Section 13",
+    "category": "Repairs",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Repairs guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-014",
+    "title": "Sample topic about tenancy basics #14",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenancy basics in UK housing law.",
+    "legal_reference": "Example Act 2014, Section 14",
+    "category": "Tenancy Basics",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenancy Basics guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-015",
+    "title": "Sample topic about rent & arrears #15",
+    "plain_summary": "This topic explains key rights and responsibilities related to rent & arrears in UK housing law.",
+    "legal_reference": "Example Act 2015, Section 15",
+    "category": "Rent & Arrears",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Rent & Arrears guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-016",
+    "title": "Sample topic about landlord responsibilities #16",
+    "plain_summary": "This topic explains key rights and responsibilities related to landlord responsibilities in UK housing law.",
+    "legal_reference": "Example Act 2016, Section 16",
+    "category": "Landlord Responsibilities",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Landlord Responsibilities guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-017",
+    "title": "Sample topic about tenant rights #17",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenant rights in UK housing law.",
+    "legal_reference": "Example Act 2017, Section 17",
+    "category": "Tenant Rights",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenant Rights guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-018",
+    "title": "Sample topic about ending tenancy #18",
+    "plain_summary": "This topic explains key rights and responsibilities related to ending tenancy in UK housing law.",
+    "legal_reference": "Example Act 2018, Section 18",
+    "category": "Ending Tenancy",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Ending Tenancy guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-019",
+    "title": "Sample topic about local support #19",
+    "plain_summary": "This topic explains key rights and responsibilities related to local support in UK housing law.",
+    "legal_reference": "Example Act 2019, Section 19",
+    "category": "Local Support",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Local Support guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-020",
+    "title": "Sample topic about emergency housing #20",
+    "plain_summary": "This topic explains key rights and responsibilities related to emergency housing in UK housing law.",
+    "legal_reference": "Example Act 2020, Section 20",
+    "category": "Emergency Housing",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Emergency Housing guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-021",
+    "title": "Sample topic about deposits #21",
+    "plain_summary": "This topic explains key rights and responsibilities related to deposits in UK housing law.",
+    "legal_reference": "Example Act 2021, Section 21",
+    "category": "Deposits",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Deposits guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-022",
+    "title": "Sample topic about evictions #22",
+    "plain_summary": "This topic explains key rights and responsibilities related to evictions in UK housing law.",
+    "legal_reference": "Example Act 2022, Section 22",
+    "category": "Evictions",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Evictions guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-023",
+    "title": "Sample topic about repairs #23",
+    "plain_summary": "This topic explains key rights and responsibilities related to repairs in UK housing law.",
+    "legal_reference": "Example Act 2023, Section 23",
+    "category": "Repairs",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Repairs guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-024",
+    "title": "Sample topic about tenancy basics #24",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenancy basics in UK housing law.",
+    "legal_reference": "Example Act 2024, Section 24",
+    "category": "Tenancy Basics",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenancy Basics guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-025",
+    "title": "Sample topic about rent & arrears #25",
+    "plain_summary": "This topic explains key rights and responsibilities related to rent & arrears in UK housing law.",
+    "legal_reference": "Example Act 2025, Section 25",
+    "category": "Rent & Arrears",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Rent & Arrears guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-026",
+    "title": "Sample topic about landlord responsibilities #26",
+    "plain_summary": "This topic explains key rights and responsibilities related to landlord responsibilities in UK housing law.",
+    "legal_reference": "Example Act 2026, Section 26",
+    "category": "Landlord Responsibilities",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Landlord Responsibilities guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-027",
+    "title": "Sample topic about tenant rights #27",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenant rights in UK housing law.",
+    "legal_reference": "Example Act 2027, Section 27",
+    "category": "Tenant Rights",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenant Rights guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-028",
+    "title": "Sample topic about ending tenancy #28",
+    "plain_summary": "This topic explains key rights and responsibilities related to ending tenancy in UK housing law.",
+    "legal_reference": "Example Act 2028, Section 28",
+    "category": "Ending Tenancy",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Ending Tenancy guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-029",
+    "title": "Sample topic about local support #29",
+    "plain_summary": "This topic explains key rights and responsibilities related to local support in UK housing law.",
+    "legal_reference": "Example Act 2029, Section 29",
+    "category": "Local Support",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Local Support guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-030",
+    "title": "Sample topic about emergency housing #30",
+    "plain_summary": "This topic explains key rights and responsibilities related to emergency housing in UK housing law.",
+    "legal_reference": "Example Act 2030, Section 30",
+    "category": "Emergency Housing",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Emergency Housing guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-031",
+    "title": "Sample topic about deposits #31",
+    "plain_summary": "This topic explains key rights and responsibilities related to deposits in UK housing law.",
+    "legal_reference": "Example Act 2031, Section 31",
+    "category": "Deposits",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Deposits guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-032",
+    "title": "Sample topic about evictions #32",
+    "plain_summary": "This topic explains key rights and responsibilities related to evictions in UK housing law.",
+    "legal_reference": "Example Act 2032, Section 32",
+    "category": "Evictions",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Evictions guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-033",
+    "title": "Sample topic about repairs #33",
+    "plain_summary": "This topic explains key rights and responsibilities related to repairs in UK housing law.",
+    "legal_reference": "Example Act 2033, Section 33",
+    "category": "Repairs",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Repairs guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-034",
+    "title": "Sample topic about tenancy basics #34",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenancy basics in UK housing law.",
+    "legal_reference": "Example Act 2034, Section 34",
+    "category": "Tenancy Basics",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenancy Basics guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-035",
+    "title": "Sample topic about rent & arrears #35",
+    "plain_summary": "This topic explains key rights and responsibilities related to rent & arrears in UK housing law.",
+    "legal_reference": "Example Act 2035, Section 35",
+    "category": "Rent & Arrears",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Rent & Arrears guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-036",
+    "title": "Sample topic about landlord responsibilities #36",
+    "plain_summary": "This topic explains key rights and responsibilities related to landlord responsibilities in UK housing law.",
+    "legal_reference": "Example Act 2036, Section 36",
+    "category": "Landlord Responsibilities",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Landlord Responsibilities guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-037",
+    "title": "Sample topic about tenant rights #37",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenant rights in UK housing law.",
+    "legal_reference": "Example Act 2037, Section 37",
+    "category": "Tenant Rights",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenant Rights guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-038",
+    "title": "Sample topic about ending tenancy #38",
+    "plain_summary": "This topic explains key rights and responsibilities related to ending tenancy in UK housing law.",
+    "legal_reference": "Example Act 2038, Section 38",
+    "category": "Ending Tenancy",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Ending Tenancy guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-039",
+    "title": "Sample topic about local support #39",
+    "plain_summary": "This topic explains key rights and responsibilities related to local support in UK housing law.",
+    "legal_reference": "Example Act 2039, Section 39",
+    "category": "Local Support",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Local Support guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-040",
+    "title": "Sample topic about emergency housing #40",
+    "plain_summary": "This topic explains key rights and responsibilities related to emergency housing in UK housing law.",
+    "legal_reference": "Example Act 2040, Section 40",
+    "category": "Emergency Housing",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Emergency Housing guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-041",
+    "title": "Sample topic about deposits #41",
+    "plain_summary": "This topic explains key rights and responsibilities related to deposits in UK housing law.",
+    "legal_reference": "Example Act 2041, Section 41",
+    "category": "Deposits",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Deposits guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-042",
+    "title": "Sample topic about evictions #42",
+    "plain_summary": "This topic explains key rights and responsibilities related to evictions in UK housing law.",
+    "legal_reference": "Example Act 2042, Section 42",
+    "category": "Evictions",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Evictions guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-043",
+    "title": "Sample topic about repairs #43",
+    "plain_summary": "This topic explains key rights and responsibilities related to repairs in UK housing law.",
+    "legal_reference": "Example Act 2043, Section 43",
+    "category": "Repairs",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Repairs guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-044",
+    "title": "Sample topic about tenancy basics #44",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenancy basics in UK housing law.",
+    "legal_reference": "Example Act 2044, Section 44",
+    "category": "Tenancy Basics",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenancy Basics guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-045",
+    "title": "Sample topic about rent & arrears #45",
+    "plain_summary": "This topic explains key rights and responsibilities related to rent & arrears in UK housing law.",
+    "legal_reference": "Example Act 2045, Section 45",
+    "category": "Rent & Arrears",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Rent & Arrears guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-046",
+    "title": "Sample topic about landlord responsibilities #46",
+    "plain_summary": "This topic explains key rights and responsibilities related to landlord responsibilities in UK housing law.",
+    "legal_reference": "Example Act 2046, Section 46",
+    "category": "Landlord Responsibilities",
+    "related_support": [
+      {
+        "agency_ID": "SUP-002",
+        "name": "Citizen\u2019s Advice",
+        "phone": "0800 144 8848",
+        "website": "https://www.citizensadvice.org.uk/housing/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Landlord Responsibilities guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-047",
+    "title": "Sample topic about tenant rights #47",
+    "plain_summary": "This topic explains key rights and responsibilities related to tenant rights in UK housing law.",
+    "legal_reference": "Example Act 2047, Section 47",
+    "category": "Tenant Rights",
+    "related_support": [
+      {
+        "agency_ID": "SUP-003",
+        "name": "Tenancy Deposit Scheme",
+        "phone": "0300 037 1000",
+        "website": "https://www.tenancydepositscheme.com/",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Tenant Rights guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-048",
+    "title": "Sample topic about ending tenancy #48",
+    "plain_summary": "This topic explains key rights and responsibilities related to ending tenancy in UK housing law.",
+    "legal_reference": "Example Act 2048, Section 48",
+    "category": "Ending Tenancy",
+    "related_support": [
+      {
+        "agency_ID": "SUP-004",
+        "name": "Camden Council Housing Support",
+        "phone": "020 7974 4444",
+        "website": "https://www.camden.gov.uk/housing",
+        "region": "London"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Ending Tenancy guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-049",
+    "title": "Sample topic about local support #49",
+    "plain_summary": "This topic explains key rights and responsibilities related to local support in UK housing law.",
+    "legal_reference": "Example Act 2049, Section 49",
+    "category": "Local Support",
+    "related_support": [
+      {
+        "agency_ID": "SUP-005",
+        "name": "Manchester Housing Advice",
+        "phone": "0161 234 5000",
+        "website": "https://www.manchester.gov.uk/info/200051/housing",
+        "region": "Manchester"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Local Support guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  },
+  {
+    "topic_ID": "TOP-050",
+    "title": "Sample topic about emergency housing #50",
+    "plain_summary": "This topic explains key rights and responsibilities related to emergency housing in UK housing law.",
+    "legal_reference": "Example Act 2050, Section 50",
+    "category": "Emergency Housing",
+    "related_support": [
+      {
+        "agency_ID": "SUP-001",
+        "name": "Shelter UK",
+        "phone": "0808 800 4444",
+        "website": "https://england.shelter.org.uk",
+        "region": "National"
+      }
+    ],
+    "related_resources": [
+      {
+        "title": "Emergency Housing guidance document",
+        "url": "https://www.gov.uk/housing-local-services"
+      }
+    ],
+    "views": 0,
+    "date_created": "2025-10-21",
+    "last_updated": "2025-10-21"
+  }
+]
