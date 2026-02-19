@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: homerights-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=homerights
+
+  backend:
+    build: ./backend
+    container_name: homerights-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - FLASK_ENV=development
+      - MONGODB_URI=mongodb://mongodb:27017/homerights
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - JWT_SECRET_KEY=jwt-secret-key-change-in-production
+    volumes:
+      - ./backend:/app
+      - ./backend/uploads:/app/uploads
+    command: python wsgi.py
+
+  frontend:
+    build: ./frontend
+    container_name: homerights-frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm start
+
+volumes:
+  mongodb_data:
