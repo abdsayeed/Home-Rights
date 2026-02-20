@@ -2,56 +2,105 @@
 
 An AI-powered platform that helps UK tenants understand their housing rights, analyze legal documents, and find support services.
 
-> **Status:** ✅ Complete MVP | **Version:** 2.0.0 | **Clean & Optimized**
+> **Status:** ✅ Complete MVP with Ollama LLM | **Version:** 2.1.0 | **Clean & Optimized**
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- Python 3.8+
-- Node.js 16+
-- MongoDB 4.4+
+> **New to the project?** Check `QUICK_START.txt` for a visual guide!
 
-### One-Command Start
+### One-Time Setup
 
 ```bash
-./start-dev.sh
+# 1. Install Ollama (for AI features)
+brew install ollama
+
+# 2. Download AI model
+ollama pull llama3
+
+# 3. Run setup
+./setup-ollama.sh
+
+# 4. (Optional) Setup easy commands
+./setup-alias.sh
 ```
 
-This will:
-- Start MongoDB (if not running)
-- Set up Python virtual environment
-- Install all dependencies
-- Start backend server (http://localhost:5001)
-- Start frontend server (http://localhost:4200)
+### Start the App
 
-**Access the application:** http://localhost:4200
+**Option 1: Simple command**
+```bash
+./start.sh
+```
 
-### Stop Servers
+**Option 2: Double-click (macOS)**
+- Double-click `launch-app.command` in Finder
+
+**Option 3: From anywhere (after running setup-alias.sh)**
+```bash
+homerights
+```
+
+**Access the app:** http://localhost:4200
+
+### Stop the App
 
 ```bash
-./stop-dev.sh
+./stop.sh
+# or: homerights-stop
 ```
 
-## 📚 Documentation
+That's it! 🎉
 
-- **README.md** (this file) - Quick start & overview
-- **COMPLETE_MVP.md** - Complete MVP documentation with all details
-- **QUICK_REFERENCE.md** - Quick commands and API reference
-- **PROJECT_STRUCTURE.md** - Clean project structure guide
+## � Documentation
+
+- **README.md** (this file) - Complete guide
+- **COMPLETE_MVP.md** - Detailed MVP documentation
+- **QUICK_REFERENCE.md** - Quick commands reference
+- **PROJECT_STRUCTURE.md** - Project structure guide
+
+## 🎯 Quick Commands
+
+```bash
+# Start everything
+./start.sh
+
+# Stop everything
+./stop.sh
+
+# Clear documents (if you want to re-upload/re-analyze)
+./clear-documents.sh
+
+# Setup easy commands (run once)
+./setup-alias.sh
+
+# Then use from anywhere:
+homerights        # Start
+homerights-stop   # Stop
+
+# Test AI integration
+cd backend && source venv/bin/activate && python test_ollama.py
+
+# View logs
+tail -f logs/backend.log
+tail -f logs/frontend.log
+```
 
 ## 📋 Features
 
-### 🤖 AI Chat Assistant
+### 🤖 AI Chat Assistant (Enhanced with Ollama!)
+- **Local LLM powered by Llama 3** - Natural, context-aware conversations
 - Intelligent conversational AI for housing law questions
-- Context-aware responses
-- Intent detection
+- Context-aware responses with conversation history
+- Intent detection and smart routing
 - Session management
+- Fallback to rule-based responses if LLM unavailable
+- **Privacy-first**: All processing happens locally, no data sent to external servers
 
-### 📄 Document Analysis
+### 📄 Document Analysis (ML + LLM Enhanced)
 - Upload PDF, JPG, PNG documents
 - OCR text extraction
 - ML-powered classification
 - Pattern detection for legal issues
+- **LLM-enhanced explanations** - Natural language analysis of detected issues
 - Risk assessment (Critical/High/Medium/Low)
 - Actionable recommendations
 - 3-tier graceful degradation
@@ -81,10 +130,23 @@ Frontend (Angular 17)  →  Backend (Flask)  →  MongoDB
     ↓                         ↓                  ↓
 Components              API Endpoints        Collections
 Services                ML Services          - users
-Guards                  Circuit Breakers     - documents
-Interceptors            Retry Logic          - chat_sessions
-                        Logging              - topics
-                        Metrics              - support_orgs
+Guards                  Ollama LLM (NEW!)    - documents
+Interceptors            Circuit Breakers     - chat_sessions
+                        Retry Logic          - topics
+                        Logging              - support_orgs
+                        Metrics
+```
+
+### AI Architecture (NEW!)
+
+```
+User Question
+     ↓
+Chat Service (Intent Detection)
+     ↓
+     ├─→ Document Text? → ML Analysis + Ollama Enhancement
+     ├─→ Conversational? → Ollama LLM (with context)
+     └─→ Ollama Fails? → Rule-based Fallback
 ```
 
 ## 📁 Project Structure
@@ -266,6 +328,13 @@ tail -f logs/frontend.log
 
 ## 🧪 Testing
 
+### Test Ollama Integration
+```bash
+cd backend
+source venv/bin/activate
+python test_ollama.py  # Tests AI chat integration
+```
+
 ### Backend Tests
 ```bash
 cd backend
@@ -313,6 +382,62 @@ See `docs/SETUP.md` for detailed deployment instructions.
 - [Architecture](arch.md) - System architecture
 
 ## 🐛 Troubleshooting
+
+### Document Analysis Not Working
+
+**Issue:** Documents not being analyzed after upload
+
+**Solution:**
+1. Check if you're uploading the same file multiple times:
+   ```bash
+   # The system detects duplicates by file hash
+   # Clear previous uploads to re-analyze:
+   ./clear-documents.sh
+   ```
+
+2. Verify ML service is running:
+   ```bash
+   curl http://localhost:5001/health | jq '.ml_service'
+   # Should show: "operational"
+   ```
+
+3. Test with text analysis first:
+   ```bash
+   python3 test-document-upload.py
+   # This will test the entire pipeline
+   ```
+
+4. Check backend logs:
+   ```bash
+   tail -f logs/backend.log
+   # Look for "Document upload request received" and "Document processed successfully"
+   ```
+
+5. Verify Python 3.12 is being used:
+   ```bash
+   cd backend && source venv/bin/activate && python --version
+   # Should show: Python 3.12.x
+   ```
+
+**Common Issues:**
+- **Duplicate Detection**: If you upload the same file twice, it returns the previous analysis. This is expected behavior.
+- **TensorFlow Not Working**: Make sure you're using Python 3.12 in the virtual environment (not system Python 3.14)
+- **OCR Failing**: For scanned PDFs/images, ensure Tesseract is installed: `brew install tesseract`
+
+### Ollama Issues
+```bash
+# Ollama not found
+brew install ollama  # Install Ollama
+
+# Model not found
+ollama pull llama3  # Download model
+
+# Service not running
+ollama serve  # Start Ollama service
+
+# Test connection
+curl http://localhost:11434/api/tags
+```
 
 ### CORS Errors
 Backend CORS is configured for `http://localhost:4200`. Update in `backend/app/__init__.py` if needed.

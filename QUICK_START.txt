@@ -1,0 +1,81 @@
+╔═══════════════════════════════════════════════════════════╗
+║           HomeRights AI - Quick Start Guide              ║
+╚═══════════════════════════════════════════════════════════╝
+
+┌───────────────────────────────────────────────────────────┐
+│ FIRST TIME SETUP (Run Once)                              │
+└───────────────────────────────────────────────────────────┘
+
+1. Install Ollama:
+   brew install ollama
+
+2. Download AI model:
+   ollama pull llama3
+
+3. Run setup:
+   ./setup-ollama.sh
+
+4. (Optional) Setup easy commands:
+   ./setup-alias.sh
+
+
+┌───────────────────────────────────────────────────────────┐
+│ START THE APP                                             │
+└───────────────────────────────────────────────────────────┘
+
+Method 1: Simple command
+   ./start.sh
+
+Method 2: Double-click (macOS)
+   Double-click "launch-app.command" in Finder
+
+Method 3: From anywhere (after setup-alias.sh)
+   homerights
+
+
+┌───────────────────────────────────────────────────────────┐
+│ STOP THE APP                                              │
+└───────────────────────────────────────────────────────────┘
+
+   ./stop.sh
+   
+   or: homerights-stop
+
+
+┌───────────────────────────────────────────────────────────┐
+│ ACCESS THE APP                                            │
+└───────────────────────────────────────────────────────────┘
+
+   🌐 http://localhost:4200
+
+
+┌───────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                           │
+└───────────────────────────────────────────────────────────┘
+
+Problem: Ollama not found
+Fix:     brew install ollama
+
+Problem: Model not found
+Fix:     ollama pull llama3
+
+Problem: Port already in use
+Fix:     ./stop.sh (then start again)
+
+Problem: Services not starting
+Fix:     Check logs/backend.log or logs/frontend.log
+
+
+┌───────────────────────────────────────────────────────────┐
+│ USEFUL COMMANDS                                           │
+└───────────────────────────────────────────────────────────┘
+
+View backend logs:   tail -f logs/backend.log
+View frontend logs:  tail -f logs/frontend.log
+Test AI:            cd backend && python test_ollama.py
+Check health:       curl http://localhost:5001/health
+
+
+╔═══════════════════════════════════════════════════════════╗
+║  That's it! Just run ./start.sh and you're ready! 🚀     ║
+╚═══════════════════════════════════════════════════════════╝

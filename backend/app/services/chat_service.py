@@ -1,9 +1,10 @@
 """
 Intelligent Chat Service
-Provides human-like legal advice responses
+Provides human-like legal advice responses using Ollama LLM
 """
 import re
 from app.services.ml_service import MLService
+from app.services.ollama_service import OllamaService
 
 
 class ChatService:
@@ -175,7 +176,7 @@ class ChatService:
     @staticmethod
     def generate_response(message, conversation_history=None):
         """
-        Generate intelligent, human-like response with validation
+        Generate intelligent, human-like response using Ollama LLM
         
         Args:
             message: User's message
@@ -218,62 +219,33 @@ class ChatService:
             # Extract context
             context = ChatService.extract_context(message)
             
-            # Check conversation history for context
-            previous_topic = None
-            if conversation_history and len(conversation_history) > 0:
-                # Get the last assistant message to understand context
-                for msg in reversed(conversation_history):
-                    if msg.get('role') == 'assistant' and msg.get('metadata'):
-                        previous_topic = msg['metadata'].get('intent')
-                        break
+            # Build conversation context for Ollama
+            conversation_context = OllamaService.build_conversation_context(conversation_history or [])
             
-            # SHORT MESSAGES: Treat as conversational questions, not document analysis
-            # Only analyze as document if it's clearly document text (long, formal, contains clauses)
+            # Check if it's document text
             is_document_text = (
                 len(message) > 200 and 
                 any(word in message.lower() for word in ['hereby', 'agreement', 'clause', 'tenant shall', 'landlord shall', 'witnesseth'])
             )
             
-            # If message looks like document text, analyze it
+            # Use Ollama LLM to generate response
             if is_document_text:
-                return ChatService._handle_document_analysis(message, context)
-            
-            # Handle specific intents (conversational)
-            if intent == 'deposit_question':
-                return ChatService._handle_deposit_question(message, context)
-            elif intent == 'repair_question':
-                return ChatService._handle_repair_question(message, context)
-            elif intent == 'eviction_question':
-                return ChatService._handle_eviction_question(message, context)
-            elif intent == 'rent_question':
-                return ChatService._handle_rent_question(message, context)
-            elif intent == 'rights_question':
-                return ChatService._handle_rights_question(message, context)
-            elif intent == 'complaint':
-                return ChatService._handle_complaint(message, context)
+                # For document analysis, use ML service first then enhance with Ollama
+                return ChatService._handle_document_analysis_with_llm(message, context, conversation_context)
             else:
-                # Check if it's a follow-up question based on previous topic
-                if previous_topic and previous_topic != 'general_question':
-                    # Route to the same handler as previous topic
-                    if previous_topic == 'deposit_question':
-                        return ChatService._handle_deposit_question(message, context)
-                    elif previous_topic == 'repair_question':
-                        return ChatService._handle_repair_question(message, context)
-                    elif previous_topic == 'eviction_question':
-                        return ChatService._handle_eviction_question(message, context)
-                    elif previous_topic == 'rent_question':
-                        return ChatService._handle_rent_question(message, context)
-                    elif previous_topic == 'rights_question':
-                        return ChatService._handle_rights_question(message, context)
+                # For conversational queries, use Ollama directly
+                llm_response = OllamaService.generate_response(message, conversation_context)
                 
-                return ChatService._handle_general_question(message, context)
+                return {
+                    'response': llm_response,
+                    'intent': intent,
+                    'needs_followup': True
+                }
+                
         except Exception as e:
             print(f"Error generating response: {e}")
-            return {
-                'response': "I apologize, but I encountered an error processing your message. Please try rephrasing your question or contact support if the issue persists.",
-                'intent': 'error',
-                'needs_followup': True
-            }
+            # Fallback to rule-based responses if Ollama fails
+            return ChatService._generate_fallback_response(message, conversation_history)
     
     @staticmethod
     def _handle_document_analysis(message, context):
@@ -809,3 +781,72 @@ class ChatService:
             'intent': 'general_question',
             'needs_followup': True
         }
+    
+    @staticmethod
+    def _handle_document_analysis_with_llm(message, context, conversation_context):
+        """Analyze document text using ML service and enhance with Ollama LLM"""
+        try:
+            # Use ML service to detect issues
+            analysis = MLService.analyze_text(message)
+            
+            if not analysis.get('success'):
+                # If ML fails, use Ollama directly
+                llm_response = OllamaService.generate_document_analysis(message)
+                return {
+                    'response': llm_response,
+                    'intent': 'document_analysis',
+                    'needs_followup': True
+                }
+            
+            # Get detected issues
+            issues = analysis.get('detected_issues', [])
+            
+            # Use Ollama to generate a comprehensive, human-like analysis
+            llm_response = OllamaService.generate_document_analysis(message, issues)
+            
+            return {
+                'response': llm_response,
+                'intent': 'document_analysis',
+                'analysis': analysis,
+                'needs_followup': False
+            }
+            
+        except Exception as e:
+            print(f"Error in document analysis: {e}")
+            return {
+                'response': "I'd love to help analyze that for you, but I'm having a technical issue right now. Could you try again, or ask me a specific question about what concerns you?",
+                'intent': 'document_analysis',
+                'needs_followup': True
+            }
+    
+    @staticmethod
+    def _generate_fallback_response(message, conversation_history):
+        """Generate fallback response using rule-based system if Ollama fails"""
+        try:
+            intent_data = ChatService.detect_intent(message)
+            intent = intent_data['intent']
+            context = ChatService.extract_context(message)
+            
+            # Use the existing rule-based handlers as fallback
+            if intent == 'deposit_question':
+                return ChatService._handle_deposit_question(message, context)
+            elif intent == 'repair_question':
+                return ChatService._handle_repair_question(message, context)
+            elif intent == 'eviction_question':
+                return ChatService._handle_eviction_question(message, context)
+            elif intent == 'rent_question':
+                return ChatService._handle_rent_question(message, context)
+            elif intent == 'rights_question':
+                return ChatService._handle_rights_question(message, context)
+            elif intent == 'complaint':
+                return ChatService._handle_complaint(message, context)
+            else:
+                return ChatService._handle_general_question(message, context)
+        except Exception as e:
+            print(f"Error in fallback response: {e}")
+            return {
+                'response': "I apologize, but I'm having trouble processing your message. Please try again or contact support.",
+                'intent': 'error',
+                'needs_followup': True
+            }
+

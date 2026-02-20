@@ -10,10 +10,6 @@ def find_support():
         return jsonify({'error': 'Postcode is required'}), 400
     
     db = current_app.db
-    
-    # TODO: Implement geospatial search based on postcode
-    # For now, return all agencies
-    
     agencies = db.agencies.find().limit(10)
     
     result = []

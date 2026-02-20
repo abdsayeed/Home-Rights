@@ -2,7 +2,13 @@
 Text Extraction Utilities
 Extract text from PDF and image files with retry logic and error handling
 """
-import pytesseract
+try:
+    import pytesseract
+    PYTESSERACT_AVAILABLE = True
+except ImportError:
+    PYTESSERACT_AVAILABLE = False
+    print("Warning: pytesseract not available - OCR features will be disabled")
+
 from PIL import Image
 import PyPDF2
 import io
