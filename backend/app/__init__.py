@@ -15,6 +15,9 @@ logger = get_logger('app')
 def create_app(config_name='development'):
     app = Flask(__name__)
     
+    # Disable strict slashes to allow both /api/topics and /api/topics/
+    app.url_map.strict_slashes = False
+    
     logger.info("Starting application initialization")
     
     # Configuration
@@ -26,6 +29,11 @@ def create_app(config_name='development'):
     app.config['DB_NAME'] = 'homerights'
     app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB max file size
     app.config['ML_MODEL_PATH'] = os.getenv('ML_MODEL_PATH', 'ml_models')
+    
+    # Admin Configuration
+    app.config['ADMIN_ROLES'] = ['super_admin', 'content_admin', 'support_admin', 'read_only']
+    app.config['DEFAULT_PAGE_SIZE'] = 20
+    app.config['MAX_PAGE_SIZE'] = 100
     
     # Initialize extensions
     CORS(app, origins=['http://localhost:4200'])
@@ -56,12 +64,13 @@ def create_app(config_name='development'):
         logger.info("ML features will use fallback mode")
     
     # Register blueprints
-    from app.api import auth, topics, documents, support, chat
+    from app.api import auth, topics, documents, support, chat, admin
     app.register_blueprint(auth.bp, url_prefix='/api/auth')
     app.register_blueprint(topics.bp, url_prefix='/api/topics')
     app.register_blueprint(documents.bp, url_prefix='/api/documents')
     app.register_blueprint(support.bp, url_prefix='/api/support')
     app.register_blueprint(chat.bp, url_prefix='/api/chat')
+    app.register_blueprint(admin.bp, url_prefix='/api/admin')
     
     logger.info("Blueprints registered")
     

@@ -13,9 +13,9 @@ export interface SupportOrganization {
     phone?: string;
     email?: string;
     website?: string;
-    address?: string;
   };
-  location: {
+  address?: string;
+  location?: {
     city?: string;
     region?: string;
     postcode?: string;
@@ -24,12 +24,20 @@ export interface SupportOrganization {
       lng: number;
     };
   };
-  availability: {
+  availability?: {
     hours?: string;
     languages?: string[];
   };
+  openingHours?: {
+    [key: string]: {
+      open: string;
+      close: string;
+    };
+  };
+  verificationStatus?: string;
   rating?: number;
   distance?: number;
+  distanceKm?: number;
 }
 
 @Injectable({
@@ -40,25 +48,28 @@ export class SupportService {
 
   constructor(private http: HttpClient) {}
 
-  findSupport(params: {
-    location?: string;
-    issue_type?: string;
-    service_type?: string;
-    max_distance?: number;
-  }): Observable<{ organizations: SupportOrganization[] }> {
+  findSupport(params: any): Observable<{ organizations: SupportOrganization[], pagination?: any }> {
     const queryParams: string[] = [];
     
-    if (params.location) queryParams.push(`location=${encodeURIComponent(params.location)}`);
-    if (params.issue_type) queryParams.push(`issue_type=${encodeURIComponent(params.issue_type)}`);
-    if (params.service_type) queryParams.push(`service_type=${encodeURIComponent(params.service_type)}`);
-    if (params.max_distance) queryParams.push(`max_distance=${params.max_distance}`);
+    // Map frontend params to backend API params
+    if (params.postcode) queryParams.push(`postcode=${encodeURIComponent(params.postcode)}`);
+    if (params.lat) queryParams.push(`lat=${params.lat}`);
+    if (params.lng) queryParams.push(`lng=${params.lng}`);
+    if (params.radius) queryParams.push(`radius=${params.radius}`);
+    if (params.service_type) queryParams.push(`type=${encodeURIComponent(params.service_type)}`);
+    if (params.page) queryParams.push(`page=${params.page}`);
+    if (params.limit) queryParams.push(`limit=${params.limit}`);
     
-    const url = queryParams.length > 0 ? `${this.apiUrl}?${queryParams.join('&')}` : this.apiUrl;
+    const url = `${this.apiUrl}/find${queryParams.length > 0 ? '?' + queryParams.join('&') : ''}`;
     
-    return this.http.get<{ organizations: SupportOrganization[] }>(url);
+    return this.http.get<{ organizations: SupportOrganization[], pagination?: any }>(url);
   }
 
   getOrganization(orgId: string): Observable<SupportOrganization> {
     return this.http.get<SupportOrganization>(`${this.apiUrl}/${orgId}`);
+  }
+
+  trackReferral(orgId: string, type: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/${orgId}/referral`, { type });
   }
 }

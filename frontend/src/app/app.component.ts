@@ -24,6 +24,9 @@ import { AuthService } from './core/services/auth.service';
             <a routerLink="/chat" routerLinkActive="active" class="nav-link">Assistant</a>
             <a routerLink="/topics" routerLinkActive="active" class="nav-link">Topics</a>
             <a routerLink="/support" routerLinkActive="active" class="nav-link">Support</a>
+            <a *ngIf="isAdmin()" routerLink="/admin" routerLinkActive="active" class="nav-link admin-link">
+              <span class="admin-icon">⚙️</span> Admin
+            </a>
           </div>
 
           <div class="nav-actions">
@@ -126,6 +129,31 @@ import { AuthService } from './core/services/auth.service';
       color: var(--ink2);
     }
 
+    .admin-link {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .admin-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .admin-link.active {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+
+    .admin-icon {
+      font-size: 16px;
+    }
+
     .main-content {
       min-height: 100vh;
     }
@@ -160,5 +188,13 @@ export class AppComponent {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/auth/login']);
+  }
+
+  isAdmin(): boolean {
+    const user = this.authService.currentUser();
+    return user?.role === 'super_admin' || 
+           user?.role === 'content_admin' || 
+           user?.role === 'support_admin' || 
+           user?.role === 'read_only';
   }
 }
