@@ -66,54 +66,67 @@ A comprehensive web application that helps UK tenants understand their rights, a
 - Python 3.8+
 - Node.js 18+
 - MongoDB 6.0+
-- Ollama (for AI features)
+- Ollama (optional, for AI chat features)
 
-### 1. Clone Repository
+### Installation
+
+1. **Clone the repository:**
 ```bash
-git clone <repository-url>
-cd homerights-ai
+git clone https://github.com/abdsayeed/Home-Rights.git
+cd Home-Rights
 ```
 
-### 2. Setup Backend
+2. **Setup backend:**
 ```bash
 cd backend
 python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+cd ..
 ```
 
-### 3. Setup Frontend
+3. **Setup frontend:**
 ```bash
 cd frontend
 npm install
+cd ..
 ```
 
-### 4. Setup Ollama (Optional - for AI chat)
-```bash
-./setup-ollama.sh
-```
-
-### 5. Create Admin User & Seed Data
+4. **Create admin user and seed data:**
 ```bash
 python3 backend/scripts/create_admin.py
 ```
 
-### 6. Start Application
+5. **Start all services:**
 ```bash
 ./start.sh
 ```
 
-The application will be available at:
+### Access the Application
+
 - **Frontend**: http://localhost:4200
-- **Backend API**: http://localhost:5000
-- **MongoDB**: mongodb://localhost:27017
+- **Backend API**: http://localhost:5001
+- **Admin Dashboard**: http://localhost:4200/admin
 
-### 7. Login
-**Regular User**: Register at http://localhost:4200/auth/register
+### Login Credentials
 
-**Admin User**:
+**Admin User:**
 - Email: `admin@homerights.ai`
 - Password: `Admin123!`
+
+**Regular User:**
+- Register at http://localhost:4200/auth/register
+
+### Stop Services
+```bash
+./stop.sh
+```
+
+---
+
+**📖 For detailed setup instructions, troubleshooting, and development guide, see [SETUP.md](SETUP.md)**
+
+---
 
 ---
 
@@ -167,29 +180,41 @@ The application will be available at:
 ## 📁 Project Structure
 
 ```
-.
+Home-Rights/
 ├── backend/                    # Python Flask backend
 │   ├── app/
-│   │   ├── api/               # API endpoints
-│   │   ├── ml/                # ML models
-│   │   ├── services/          # Business logic
-│   │   └── utils/             # Utilities
-│   ├── scripts/               # Setup scripts
-│   ├── data/db/               # MongoDB data
-│   ├── uploads/               # Uploaded files
-│   └── requirements.txt       # Python dependencies
+│   │   ├── api/               # API endpoints (auth, chat, documents, topics, support, admin)
+│   │   ├── ml/                # ML models (document classifier, pattern detector)
+│   │   ├── services/          # Business logic (chat, ollama, ML services)
+│   │   └── utils/             # Utilities (admin decorators, circuit breaker, validators)
+│   ├── data/db/               # MongoDB data directory
+│   ├── scripts/               # Setup scripts (create_admin.py, setup_indexes.py)
+│   ├── uploads/               # Uploaded document files
+│   ├── venv/                  # Python virtual environment
+│   ├── requirements.txt       # Python dependencies
+│   └── wsgi.py               # WSGI entry point
 │
-├── frontend/                   # Angular frontend
+├── frontend/                   # Angular 17 frontend
 │   ├── src/app/
-│   │   ├── core/              # Services & guards
+│   │   ├── core/              # Core services and guards
+│   │   │   ├── services/      # API services (auth, admin, chat, document, topic, support)
+│   │   │   └── guards/        # Route guards (auth.guard, admin.guard)
 │   │   └── features/          # Feature modules
-│   └── package.json           # NPM dependencies
+│   │       ├── admin/         # Admin dashboard (users, topics, organizations)
+│   │       ├── auth/          # Authentication (login, register)
+│   │       ├── chat/          # AI chat interface
+│   │       ├── documents/     # Document upload and analysis
+│   │       ├── support/       # Support organization finder
+│   │       └── topics/        # Housing law topics browser
+│   ├── package.json           # NPM dependencies
+│   └── angular.json           # Angular configuration
 │
 ├── docs/                       # Documentation
-├── logs/                       # Application logs
-├── start.sh                    # Start script
-├── stop.sh                     # Stop script
-└── README.md                   # This file
+├── start.sh                    # Start all services script
+├── stop.sh                     # Stop all services script
+├── README.md                   # This file
+├── SETUP.md                    # Detailed setup guide
+└── MVP_COMPLETE.md            # Complete MVP documentation
 ```
 
 ---
@@ -323,6 +348,7 @@ mongod --dbpath /path/to/data/db
 - Check MongoDB is running: `mongosh`
 - Check Python version: `python3 --version` (need 3.8+)
 - Reinstall dependencies: `pip install -r requirements.txt`
+- Verify virtual environment is activated
 
 ### Frontend won't start
 - Check Node version: `node --version` (need 18+)
@@ -331,24 +357,29 @@ mongod --dbpath /path/to/data/db
 
 ### Admin dashboard shows nothing
 - Verify you're logged in as admin user
-- Check backend is running on port 5000
-- Check browser console for errors
-- Verify admin role: `mongosh homerights --eval "db.users.findOne({email: 'admin@homerights.ai'})"`
+- Check backend is running on port 5001
+- Check browser console for errors (F12)
+- Re-run seed script: `python3 backend/scripts/create_admin.py`
 
 ### AI chat not working
 - Check Ollama is installed: `ollama --version`
 - Check Ollama is running: `curl http://localhost:11434/api/tags`
 - Pull model: `ollama pull llama3.2`
+- Start Ollama: `ollama serve`
 
 ### Database connection failed
 - Check MongoDB is running: `mongosh`
 - Check connection string in `.env`
 - Check MongoDB port: `lsof -i :27017`
+- Restart MongoDB service
 
 ### Can't upload documents
 - Check `backend/uploads/` directory exists and is writable
 - Check file size limit (default 10MB)
 - Check file type (PDF only)
+- Verify backend is running
+
+**📖 For more detailed troubleshooting, see [SETUP.md](SETUP.md#troubleshooting)**
 
 ---
 
@@ -495,9 +526,21 @@ npm run e2e
 - `./stop.sh` - Stop all services
 
 ### Setup
-- `./setup-ollama.sh` - Install and configure Ollama
-- `python3 backend/scripts/create_admin.py` - Create admin user and seed data
-- `python3 backend/scripts/setup_indexes.py` - Create database indexes
+- `python3 backend/scripts/create_admin.py` - Create admin user and seed data (15 topics, 15 organizations)
+- `python3 backend/scripts/setup_indexes.py` - Create database indexes for performance
+
+### Development
+- `cd backend && source venv/bin/activate && python wsgi.py` - Run backend only
+- `cd frontend && npm start` - Run frontend only
+- `mongod --dbpath backend/data/db` - Run MongoDB only
+
+---
+
+## 📚 Documentation
+
+- **[SETUP.md](SETUP.md)** - Complete setup guide with detailed instructions and troubleshooting
+- **[MVP_COMPLETE.md](MVP_COMPLETE.md)** - Full MVP documentation with architecture and features
+- **[README.md](README.md)** - This file (project overview)
 
 ---
 
@@ -533,31 +576,46 @@ For issues and questions:
 
 ## 🎯 Roadmap
 
-### Phase 1 (Current)
-- ✅ User authentication
-- ✅ Document upload and analysis
-- ✅ AI chat assistant
-- ✅ Topics knowledge base
-- ✅ Support finder
-- ✅ Admin dashboard
+### Phase 1 (Current - Completed ✅)
+- ✅ User authentication and authorization
+- ✅ Document upload and ML-powered analysis
+- ✅ AI chat assistant using Ollama (Llama 3.2)
+- ✅ Comprehensive housing law topics (15 topics)
+- ✅ Support organization finder (15 organizations)
+- ✅ Admin dashboard with full CRUD operations
+- ✅ Role-based access control (5 roles)
+- ✅ Audit logging for compliance
 
-### Phase 2 (Planned)
-- [ ] Rich text editor for topics
-- [ ] Advanced document analysis
-- [ ] Email notifications
-- [ ] Mobile app
-- [ ] Multi-language support
-- [ ] Advanced analytics
+### Phase 2 (Planned - Q2 2026)
+- [ ] Rich text editor for topic creation
+- [ ] Email notifications for document analysis
+- [ ] Advanced search with filters
+- [ ] User feedback system
+- [ ] Mobile-responsive improvements
+- [ ] Performance optimizations
 
-### Phase 3 (Future)
+### Phase 3 (Future - Q3 2026)
+- [ ] Mobile native apps (iOS/Android)
+- [ ] Multi-language support (Welsh, Polish, Urdu)
+- [ ] Video tutorial library
+- [ ] Community forum
+- [ ] Live chat support
+- [ ] Advanced analytics dashboard
+
+### Phase 4 (Long-term - Q4 2026)
 - [ ] Integration with government APIs
 - [ ] Automated legal document generation
-- [ ] Community forum
-- [ ] Video tutorials
-- [ ] Live chat support
+- [ ] Machine learning model improvements
+- [ ] API for third-party integrations
+- [ ] Predictive analytics for housing disputes
 
 ---
 
-**Last Updated**: February 21, 2026  
+**Last Updated**: March 2, 2026  
 **Version**: 2.0.0  
-**Status**: Production Ready ✅
+**Status**: Production Ready ✅  
+**Repository**: https://github.com/abdsayeed/Home-Rights.git
+
+---
+
+**Built with ❤️ for UK tenants**
