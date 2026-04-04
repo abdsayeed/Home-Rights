@@ -8,7 +8,10 @@ A comprehensive web application that helps UK tenants understand their rights, a
 
 ## 📋 Table of Contents
 
-- [Features](#-features)
+- [Features Implemented](#-features-implemented)
+- [Challenges Faced](#️-challenges-faced)
+- [Testing Done](#-testing-done)
+- [What Worked vs What Didn't](#-what-worked-vs--what-didnt)
 - [Tech Stack](#-tech-stack)
 - [Quick Start](#-quick-start)
 - [Admin Dashboard](#-admin-dashboard)
@@ -17,6 +20,7 @@ A comprehensive web application that helps UK tenants understand their rights, a
 - [Development](#-development)
 - [Deployment](#-deployment)
 - [Troubleshooting](#-troubleshooting)
+- [Roadmap](#-roadmap)
 
 ---
 
@@ -571,6 +575,194 @@ Built with ❤️ for UK tenants
 For issues and questions:
 - Create an issue on GitHub
 - Email: support@homerights.ai
+
+---
+
+## ✅ Features Implemented
+
+### User-Facing Features
+- **User Registration & Login** - JWT-based authentication with secure password hashing
+- **AI Chat Assistant** - Conversational interface powered by Ollama (Llama 3.2) for tenant rights questions
+- **Document Upload & Analysis** - PDF upload with ML-powered risk detection, classifying clauses as critical/high/medium/low risk
+- **Housing Law Topics** - 15 comprehensive articles covering eviction, deposits, repairs, rent, and tenant rights
+- **Support Finder** - Browse 15 verified UK housing support organizations with contact details and services
+- **User Dashboard** - View uploaded documents, saved topics, and chat history
+- **Topic Bookmarking** - Save topics for later reference
+
+### Admin Features
+- **Admin Dashboard** - Real-time KPIs (users, documents, topics, organizations, chat messages) with period filtering
+- **User Management** - View, search, filter, and update roles for all users with pagination
+- **Topics CRUD** - Create, edit, delete, publish/unpublish housing law topics with category and tag management
+- **Organizations CRUD** - Create, edit, delete, verify support organizations and toggle referral status
+- **Role-Based Access Control** - 5 roles: super_admin, content_admin, support_admin, read_only, user
+- **Audit Logging** - Every admin action is logged with before/after state, IP address, and timestamp
+- **Admin Route Guards** - Frontend and backend protection preventing unauthorized access
+
+### Technical Features
+- **Circuit Breaker Pattern** - Graceful degradation when Ollama is unavailable
+- **Retry Strategies** - Automatic retry logic for external service calls
+- **Input Validation** - Server-side validation on all API endpoints
+- **Geo-spatial Search** - MongoDB 2dsphere index for location-based organization search
+- **Database Indexing** - Compound indexes for fast queries across all collections
+- **CORS Configuration** - Secure cross-origin request handling
+- **Docker Support** - Docker Compose configuration for containerized deployment
+
+---
+
+## ⚠️ Challenges Faced
+
+### 1. Ollama Integration & Reliability
+**Challenge**: Ollama (the local LLM) would sometimes be slow to respond or crash mid-session, causing the entire chat feature to fail with unhandled errors.
+
+**Solution**: Implemented a circuit breaker pattern (`backend/app/utils/circuit_breaker.py`) that detects when Ollama is failing and switches to a fallback response mode. Also added retry strategies with exponential backoff so temporary failures recover automatically without the user noticing.
+
+---
+
+### 2. Admin Dashboard Showing Fake/Empty Data
+**Challenge**: The initial admin dashboard was rendering hardcoded dummy data instead of pulling from the real MongoDB database. Users could not see actual users, topics, or organizations, and none of the CRUD operations worked.
+
+**Solution**: Rewrote all admin API endpoints in `backend/app/api/admin.py` to query MongoDB directly using PyMongo. Rebuilt the Angular admin service (`admin.service.ts`) to make real HTTP calls. Added proper error handling and loading states so the UI reflects actual database state.
+
+---
+
+### 3. JWT Authentication Across Admin Routes
+**Challenge**: Protecting admin routes required both frontend route guards and backend API protection. Early versions allowed any logged-in user to access admin endpoints by manipulating the URL directly.
+
+**Solution**: Created a custom `@require_admin()` decorator in `backend/app/utils/admin_decorators.py` that validates the JWT token and checks the user's role on every admin API call. On the frontend, `admin.guard.ts` checks the role stored in the auth service before allowing navigation to any `/admin/*` route.
+
+---
+
+### 4. PDF Document Analysis Accuracy
+**Challenge**: The ML document classifier struggled with scanned PDFs and complex multi-column layouts. PyPDF2 would extract garbled or incomplete text from these files, causing the risk analysis to miss important clauses.
+
+**Solution**: Added a pre-processing step in `backend/app/ml/text_extractor.py` to clean and normalize extracted text before passing it to the classifier. For heavily scanned documents, the system now returns a partial analysis with a warning rather than failing silently.
+
+---
+
+### 5. MongoDB Geo-spatial Queries
+**Challenge**: The support organization search by location was returning errors because the `location` field was not indexed correctly. MongoDB requires a specific `2dsphere` index for geo-spatial queries, and without it queries would fail or return wrong results.
+
+**Solution**: Created `backend/scripts/setup_indexes.py` to programmatically create all required indexes including the `2dsphere` index on `support_orgs.location`. This script must be run once during setup.
+
+---
+
+### 6. Angular 17 Standalone Components & Routing
+**Challenge**: Angular 17 introduced standalone components which changed how modules, imports, and routing work compared to older Angular versions. Several components were missing required imports (e.g., `CommonModule`, `RouterModule`) causing template errors that were hard to debug.
+
+**Solution**: Carefully audited each standalone component's `imports` array and ensured all directives (`*ngFor`, `*ngIf`, `routerLink`) had their corresponding modules imported. Switched to Angular's new `@if` and `@for` control flow syntax where possible.
+
+---
+
+### 7. CORS Issues Between Frontend and Backend
+**Challenge**: During development, the Angular frontend (port 4200) was blocked from making requests to the Flask backend (port 5001) due to CORS policy errors in the browser.
+
+**Solution**: Configured `flask-cors` in `backend/app/__init__.py` to explicitly allow requests from `http://localhost:4200` with the required headers and methods. Also set up an Angular proxy configuration for development.
+
+---
+
+## 🧪 Testing Done
+
+### Manual Testing (Primary Method)
+
+**Authentication Flow**
+- Registered new user accounts and verified JWT token is returned
+- Logged in with correct and incorrect credentials - error messages display correctly
+- Verified token expiry forces re-login after 2 hours (admin) / 24 hours (user)
+- Tested admin route guard by trying to access `/admin` as a regular user - correctly redirected
+
+**Admin Dashboard**
+- Verified all 5 KPI cards show real counts from MongoDB
+- Tested period filter (7d, 30d, 90d) and confirmed numbers change
+- Created, edited, and deleted topics - changes reflected immediately in the list
+- Published and unpublished topics - verified status updates correctly
+- Created and verified support organizations - verified/unverified status toggles work
+- Changed user roles and confirmed permissions update immediately
+- Checked audit logs after each admin action - all actions recorded correctly
+
+**Document Analysis**
+- Uploaded a clean PDF rental contract - received low risk result
+- Uploaded a contract with risky clauses (unfair deposit terms, no-notice entry) - received high/critical risk flags
+- Tested file size limit - files over 10MB correctly rejected
+- Tested non-PDF upload - correctly rejected with error message
+
+**AI Chat**
+- Asked basic tenant rights questions - received relevant responses
+- Tested with Ollama stopped - circuit breaker triggered fallback response gracefully
+- Verified chat history persists across page refreshes
+
+**Support Finder**
+- Browsed all 15 organizations - all display correctly with contact details
+- Filtered by organization type - results filtered correctly
+- Verified verified/unverified badges display correctly
+
+**Topics Browser**
+- Browsed all 15 topics across all 5 categories
+- Tested search and category filter
+- Bookmarked topics and verified they appear in user dashboard
+
+### API Testing (curl / browser)
+```bash
+# Health check
+curl http://localhost:5001/health
+
+# Get all topics
+curl http://localhost:5001/api/topics
+
+# Get support organizations
+curl http://localhost:5001/api/support
+
+# Login
+curl -X POST http://localhost:5001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@homerights.ai","password":"Admin123!"}'
+```
+
+### Database Verification
+```bash
+# Verified data in MongoDB directly
+mongosh homerights --eval "db.users.countDocuments()"
+mongosh homerights --eval "db.topics.countDocuments()"
+mongosh homerights --eval "db.support_orgs.countDocuments()"
+```
+
+---
+
+## 🟢 What Worked vs ❌ What Didn't
+
+### 🟢 What Worked Well
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| User authentication (register/login) | ✅ Working | JWT tokens, password hashing, role assignment |
+| Admin dashboard with real data | ✅ Working | All KPIs pull from MongoDB in real time |
+| Topics CRUD (create/edit/delete/publish) | ✅ Working | Full admin management with category and tags |
+| Organizations CRUD + verification | ✅ Working | Create, edit, verify, toggle referrals |
+| User role management | ✅ Working | super_admin can change any user's role |
+| Audit logging | ✅ Working | Every admin action logged with full detail |
+| PDF document upload | ✅ Working | File validation, storage, metadata saved |
+| Document risk analysis | ✅ Working | ML classifier identifies risky clauses |
+| Housing law topics browser | ✅ Working | 15 topics, filterable by category |
+| Support organization finder | ✅ Working | 15 UK organizations with full details |
+| AI chat (when Ollama running) | ✅ Working | Conversational responses about tenant rights |
+| Circuit breaker for Ollama | ✅ Working | Graceful fallback when AI is unavailable |
+| Role-based access control | ✅ Working | Frontend guards + backend decorators |
+| Database indexing | ✅ Working | Fast queries, geo-spatial search enabled |
+| Docker Compose setup | ✅ Working | Full containerized deployment available |
+
+### ❌ What Didn't Work / Limitations
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| AI chat accuracy | ⚠️ Partial | Llama 3.2 (3B) sometimes gives generic answers; a larger model would improve quality |
+| Scanned PDF analysis | ⚠️ Partial | OCR not implemented; scanned PDFs with no text layer fail to extract content |
+| Geo-spatial map display | ❌ Not implemented | Location data is stored but no interactive map UI was built |
+| Email notifications | ❌ Not implemented | No email sent after document analysis or account events |
+| Mobile responsive design | ⚠️ Partial | Admin dashboard not fully optimized for small screens |
+| Automated test suite | ❌ Not implemented | No unit or integration tests written; all testing was manual |
+| Password reset flow | ❌ Not implemented | Users cannot reset forgotten passwords |
+| Rich text editor for topics | ❌ Not implemented | Topic body is plain text; no formatting tools in admin |
+| Real-time notifications | ❌ Not implemented | No WebSocket or push notification support |
+| Multi-language support | ❌ Not implemented | English only; no Welsh or other language options |
 
 ---
 
