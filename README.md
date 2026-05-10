@@ -112,11 +112,7 @@ python3 backend/scripts/create_admin.py
 - **Backend API**: http://localhost:5001
 - **Admin Dashboard**: http://localhost:4200/admin
 
-### Login Credentials
 
-**Admin User:**
-- Email: `admin@homerights.ai`
-- Password: `Admin123!`
 
 **Regular User:**
 - Register at http://localhost:4200/auth/register
